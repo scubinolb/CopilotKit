@@ -7,6 +7,7 @@ import { PiGraph } from "react-icons/pi";
 import { SiCrewai } from "@icons-pack/react-simple-icons";
 import { Sparkles, Rocket } from "lucide-react";
 import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 // Time in milliseconds before a dismissed banner reappears
 const BANNER_REAPPEAR_DELAY = 3 * 24 * 60 * 60 * 1000; // 3 days
@@ -102,8 +103,8 @@ export function Banners() {
   const content = bannerContent[currentBanner];
 
   return (
-    <div key={key} className="w-full px-1 mt-1 xl:px-2 xl:mt-2">
-      <Banner className="w-full text-foreground bg-secondary/80 backdrop-blur-sm border border-border rounded-2xl py-1.5 md:py-2" id="rotating-banner">
+    <div key={key} className={cn("w-full px-1 xl:px-2", !content && "hidden")}>
+      <Banner className="w-full text-foreground bg-secondary/80 backdrop-blur-sm border border-border rounded-2xl py-1.5 md:py-2 mt-1 xl:mt-2" id="rotating-banner">
         <div className="flex flex-row items-center justify-center gap-1.5 md:gap-3 w-full px-1 md:px-4">
           <div 
             key={currentBanner}
